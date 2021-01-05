@@ -1,96 +1,27 @@
+
 <?php
-  if (isset($_GET['lang'])) {
-    switch ($_GET['lang']) {
-      case 'en':
-        ?>
-        <li class="nav-item">
-          <a class="nav-link js-scroll active" href="index.php?lang=en">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#service">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#work">Work</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#blog">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#contact">Contact</a>
-        </li>
-        <?php
-        break;
+if ($lang == 'tr' OR $lang == 'en' OR $lang == 'ru' OR $lang == 'ja' OR $lang == 'de' OR $lang == 'ar') {
+  $lang_menus = $db->query("SELECT * FROM lang_menu WHERE lang = '{$lang}'");
+  if ($lang_menus->rowCount()) {
+    foreach($lang_menus as $lang_menu){
 
-        case 'ru':
-          ?>
-          <li class="nav-item">
-            <a class="nav-link js-scroll active" href="index.php?lang=ru">Главная</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#about">около</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#service">Сервисы</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#work">Работа</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#blog">блог</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#contact">контакт</a>
-          </li>
-          <?php
-          break;
-
-      default:
-        ?>
-        <li class="nav-item">
-          <a class="nav-link js-scroll active" href="index.php?lang=tr">Ana Sayfa</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#about">Ben</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#service">Hizmet</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#work">Proje</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#blog">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" href="#contact">İletişim</a>
-        </li>
-        <?php
-        break;
+      ?>
+      <li class="nav-item">
+        <a class="nav-link js-scroll" href="<?php echo $lang_menu['href']; ?>"><?php echo $lang_menu['item']; ?></a>
+      </li>
+      <?php
     }
-  } else {
-    ?>
-    <li class="nav-item">
-      <a class="nav-link js-scroll active" href="index.php">Ana Sayfa</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link js-scroll" href="#about">Ben</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link js-scroll" href="#service">Hizmet</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link js-scroll" href="#work">Proje</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link js-scroll" href="#blog">Blog</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link js-scroll" href="#contact">İletişim</a>
-    </li>
-    <?php
   }
+} else {
+  $lang_menus = $db->query("SELECT * FROM lang_menu WHERE lang = 'tr'");
+  if ($lang_menus->rowCount()) {
+    foreach($lang_menus as $lang_menu){
 
-?>
+      ?>
+      <li class="nav-item">
+        <a class="nav-link js-scroll" href="<?php echo $lang_menu['href']; ?>"><?php echo $lang_menu['item']; ?></a>
+      </li>
+      <?php
+    }
+  }
+}

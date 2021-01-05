@@ -11,19 +11,14 @@
 
     <title>Ops! Bakımdayız...</title>
   </head>
-  <body style="background-color: #2d3436;">
-    <div class="container pt-5">
+  <body style="background-color: #BFDCE3;">
+    <div class="container text-center">
       <div class="row">
+        <div class="col-12 py-5">
+          <img class="img-fluid rounded" style="border: 1px solid #BFDCE3;" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3e2a0443163649.57f1d6ec22833.gif" alt="Mehmet Deniz Aydın Bakımda">
+        </div>
         <div class="col-12">
-          <div class="alert alert-warning" role="alert">
-            <h4 class="alert-heading">Ops!</h4>
-            <hr>
-            <i class="icofont-hammer"></i>
-            <p>Bakım modu aktif...</p>
-            <hr>
-            <i class="icofont-hammer"></i>
-            <p class="mb-0">Maintenance mode is active...</p>
-          </div>
+          <h1 class="display-4" style="color: #E76B31; font-size:xxx;">Maintenance Mode is Active</h1>
         </div>
       </div>
     </div>
